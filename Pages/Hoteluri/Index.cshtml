@@ -1,0 +1,58 @@
+﻿@page
+@model Sasarman_Andra_Proiect1.Pages.Hoteluri.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Hoteluri</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hotel[0].HotelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hotel[0].Facilități)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hotel[0].HotelCategories)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.HotelD.Hoteluri) {
+    string selectedRow = "";
+    if (item.ID == Model.HotelID)
+    {
+        selectedRow = "table-success";
+    }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.HotelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Facilități)
+            </td>
+            <td>
+                @{
+                    foreach (var category in item.HotelCategories)
+                    {
+                        @category.Category.ID @: @category.Category.CategoryName <br />
+                    }
+                }
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

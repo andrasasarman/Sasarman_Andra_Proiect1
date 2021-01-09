@@ -1,0 +1,64 @@
+﻿@page
+@model Sasarman_Andra_Proiect1.Pages.Vacanțe.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Vacanță</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Vacanță.ID" />
+            <div class="form-group">
+                <label asp-for="Vacanță.Destinație" class="control-label"></label>
+                <input asp-for="Vacanță.Destinație" class="form-control" />
+                <span asp-validation-for="Vacanță.Destinație" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vacanță.Plecare" class="control-label"></label>
+                <input asp-for="Vacanță.Plecare" class="form-control" />
+                <span asp-validation-for="Vacanță.Plecare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vacanță.Preț" class="control-label"></label>
+                <input asp-for="Vacanță.Preț" class="form-control" />
+                <span asp-validation-for="Vacanță.Preț" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vacanță.Date" class="control-label"></label>
+                <input asp-for="Vacanță.Date" class="form-control" />
+                <span asp-validation-for="Vacanță.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vacanță.Durata" class="control-label"></label>
+                <input asp-for="Vacanță.Durata" class="form-control" />
+                <span asp-validation-for="Vacanță.Durata" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vacanță.NrPers" class="control-label"></label>
+                <input asp-for="Vacanță.NrPers" class="form-control" />
+                <span asp-validation-for="Vacanță.NrPers" class="text-danger"></span>
+            </div>
+            <label asp-for="Vacanță.HotelID" class="control-label">Hotel Name</label>
+            <select asp-for="Vacanță.HotelID" class="form-control" asp-items="ViewBag.HotelID">
+            </select>
+            <span asp-validation-for="Vacanță.HotelID" class="text-danger"></span>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
